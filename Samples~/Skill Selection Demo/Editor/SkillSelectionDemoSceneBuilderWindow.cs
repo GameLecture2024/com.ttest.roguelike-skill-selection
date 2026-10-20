@@ -6,6 +6,7 @@ using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -72,6 +73,7 @@ namespace TTest.RoguelikeSkillSelection.Samples.SkillSelectionDemo.Editor
 
             var controllerObject = new GameObject("Demo Controller");
             var controller = controllerObject.AddComponent<SkillSelectionDemoController>();
+            var input = controllerObject.AddComponent<SkillSelectionDemoInput>();
             SetReference(controller, "selectionPanel", panel);
             SetReference(controller, "resultText", resultText);
             var controllerData = new SerializedObject(controller);
@@ -83,7 +85,9 @@ namespace TTest.RoguelikeSkillSelection.Samples.SkillSelectionDemo.Editor
 
             var reopenButton = CreateButton("Show Choices Button", canvas.transform, "Show Choices");
             SetRect(reopenButton.GetComponent<RectTransform>(), new Vector2(.5f, .16f), new Vector2(.5f, .16f), new Vector2(240f, 56f));
-            reopenButton.onClick.AddPersistentListener(controller.ShowChoices);
+            reopenButton.onClick.AddListener(controller.ShowChoices);
+            SetReference(controller, "input", input);
+            SetReference(input, "showChoicesButton", reopenButton);
 
             EditorSceneManager.SaveScene(scene, scenePath);
             AssetDatabase.SaveAssets();
@@ -103,7 +107,11 @@ namespace TTest.RoguelikeSkillSelection.Samples.SkillSelectionDemo.Editor
             return canvas;
         }
 
-        private static void CreateEventSystem() => new GameObject("EventSystem", typeof(EventSystem), typeof(StandaloneInputModule));
+        private static void CreateEventSystem()
+        {
+            var eventSystem = new GameObject("EventSystem", typeof(EventSystem), typeof(InputSystemUIInputModule));
+            eventSystem.GetComponent<InputSystemUIInputModule>().AssignDefaultActions();
+        }
 
         private static GameObject CreatePanel(Transform parent)
         {

@@ -1,12 +1,13 @@
 {
   "name": "com.ttest.roguelike-skill-selection",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "displayName": "TTest Roguelike Skill Selection",
   "description": "Project-specific UGUI skill choice panel built on TTest Unity Utilities.",
   "unity": "6000.0",
   "dependencies": {
     "com.ttest.unity-utilities": "0.1.1",
-    "com.unity.ugui": "2.0.0"
+    "com.unity.ugui": "2.0.0",
+    "com.unity.inputsystem": "1.19.0"
   },
   "author": {
     "name": "TTest"
