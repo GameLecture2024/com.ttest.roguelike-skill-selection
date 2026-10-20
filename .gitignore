@@ -1,5 +1,4 @@
-# Unity-generated files are project-local and not part of a UPM package source.
-*.meta
+# Keep Unity .meta files: they preserve GUIDs for package assets and folders.
 Library/
 Temp/
 Obj/
