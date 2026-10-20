@@ -1,0 +1,13 @@
+# Unity-generated files are project-local and not part of a UPM package source.
+*.meta
+Library/
+Temp/
+Obj/
+Logs/
+UserSettings/
+MemoryCaptures/
+Recordings/
+*.csproj
+*.sln
+*.user
+*.userprefs

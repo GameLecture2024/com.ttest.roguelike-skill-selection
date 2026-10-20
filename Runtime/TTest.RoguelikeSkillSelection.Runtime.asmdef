@@ -1,0 +1,9 @@
+{
+  "name": "TTest.RoguelikeSkillSelection.Runtime",
+  "rootNamespace": "TTest.RoguelikeSkillSelection",
+  "references": [
+    "TTest.UnityUtilities.Runtime",
+    "UnityEngine.UI"
+  ],
+  "autoReferenced": true
+}
